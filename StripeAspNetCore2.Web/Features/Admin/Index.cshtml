@@ -1,0 +1,28 @@
+﻿@using StripeAspNetCore2.Web.Constants
+@using StripeAspNetCore2.Web.Navigation
+
+@{
+	ViewData["Title"] = "Admin";
+}
+
+<div class="page-header">
+	<h1>
+		<span class="@Admin.Index.FaClassPage"></span> @ViewBag.Title
+	</h1>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-6">
+		<a class="btn btn-warning"
+			 asp-action="@Admin.ThrowException.Action">
+			<i class="@Admin.ThrowException.FaClass" aria-hidden="true"></i> @Admin.ThrowException.Title
+		</a>
+	</div>
+	<div class="col-xs-6">
+		<a class="btn btn-warning"
+			 asp-action="@Admin.ErrorTest.Action">
+			<i class="@Admin.ErrorTest.FaClass" aria-hidden="true"></i> @Admin.ErrorTest.Title
+		</a>
+	</div>
+</div>

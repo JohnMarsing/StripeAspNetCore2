@@ -1,0 +1,26 @@
+﻿@model StripeAspNetCore2.Web.ViewModels.Donate.ChargeVM
+@using StripeAspNetCore2.Web.Constants.Donate
+
+@{
+    ViewBag.Title = "Charge";
+}
+
+<div class="page-header">
+	<h3>
+		<span class="text-success fa fa-cc-stripe"></span> @ViewBag.Title
+	</h3>
+</div>
+
+<form action="@Url.Action(Actions.Charge)" method="POST">
+	<article>
+		<label>Amount: 10.00</label>
+	</article>
+	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					data-key="@MyStripeSettings.PublishableKey"
+					data-amount="1000"
+					data-name="@MyStripeSettings.SiteName"
+					data-description="@Description.Donation"
+					data-image="@MyStripeSettings.image"
+					data-locale="auto">
+	</script>
+</form>

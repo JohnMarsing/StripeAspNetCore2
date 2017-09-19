@@ -1,0 +1,57 @@
+﻿@using StripeAspNetCore2.Web.Navigation
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a asp-controller="@Home.Controller"
+				 asp-action="@Home.Index.Action"
+				 class="navbar-brand">
+				<span class="@Home.Index.FaClass2"></span> @Home.Index.Title2
+			</a>
+		</div>
+
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+
+				<li>
+					<a asp-controller="@Home.Controller"
+						 asp-action="@Home.About.Action"
+						 class="navbar-brand">
+						<span class="@Home.About.FaClass"></span> @Home.About.Title
+					</a>
+				</li>
+
+				<li>
+					<a asp-controller="@Home.Controller"
+						 asp-action="@Home.Contact.Action"
+						 class="navbar-brand">
+						<span class="@Home.Contact.FaClass"></span> @Home.Contact.Title
+					</a>
+
+				</li>
+
+				<li>
+					<a asp-controller="@Payments.Controller"
+						 asp-action="@Payments.Index.Action"
+						 class="navbar-brand">
+						<span class="@Payments.Index.FaClass"></span> @Payments.Index.Title
+					</a>
+				</li>
+
+				<li>
+					<a asp-controller="@Admin.Controller"
+						 asp-action="@Admin.Index.Action"
+						 class="navbar-brand">
+						<span class="@Admin.Index.FaClassNavBar"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
