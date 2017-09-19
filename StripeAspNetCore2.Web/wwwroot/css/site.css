@@ -1,35 +1,100 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Carousel */
 .carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+	font-size: 20px;
+	line-height: 1.4;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+	width: 100%;
 }
 
 /* QR code generator */
 #qrCode {
-    margin: 15px;
+	margin: 15px;
 }
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+	/* Hide captions */
+	.carousel-caption {
+		display: none;
+	}
+}
+
+
+
+.badge {
+	padding: 1px 9px 2px;
+	font-size: 12.025px;
+	font-weight: bold;
+	white-space: nowrap;
+	color: #ffffff;
+	background-color: #999999;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	border-radius: 9px;
+}
+
+	.badge:hover {
+		color: #ffffff;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+.badge-error {
+	background-color: #b94a48;
+}
+
+	.badge-error:hover {
+		background-color: #953b39;
+	}
+
+.badge-warning {
+	background-color: #f89406;
+}
+
+	.badge-warning:hover {
+		background-color: #c67605;
+	}
+
+.badge-success {
+	background-color: #468847;
+}
+
+	.badge-success:hover {
+		background-color: #356635;
+	}
+
+.badge-info {
+	background-color: #3a87ad;
+}
+
+	.badge-info:hover {
+		background-color: #2d6987;
+	}
+
+.badge-inverse {
+	background-color: #333333;
+}
+
+	.badge-inverse:hover {
+		background-color: #1a1a1a;
+	}
+
+.home-page-xs {
+	font-size: large;
+	color: #008000;
 }

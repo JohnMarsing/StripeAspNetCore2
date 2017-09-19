@@ -1,0 +1,111 @@
+﻿
+@using StripeAspNetCore2.Web.Constants
+@inject IOptions<Stripe> Stripe
+
+@{
+	ViewBag.Title = "Donate";
+	string donation = "sonation transation";
+}
+
+<h2>Donate</h2>
+
+
+@{
+	ViewBag.Title = "Charge";
+}
+
+<div class="page-header">
+	<h3>
+		<span class="text-success fa fa-cc-stripe"></span> @ViewBag.Title
+	</h3>
+</div>
+
+<div class="row">
+	<div class="col-md-12 form-column">
+y
+		<div class="form-container">
+			@* <form id="form" action="@Url.Action(Actions.Confirmation)" method="POST"> *@
+			<form id="form">
+				<input type="hidden" name="key" value="stripeToken" />
+				@*<span class="payment-errors"></span>*@
+				<div id="error_explanation">
+				</div>
+
+				<div class="form-group">
+					<label for="amount">Amount: </label>
+					<input class="form-control form-input" id="amount" type="text">
+				</div>
+				<button class="btn btn-default" type="submit" id="donateButton">Donate</button>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+@section topLevel{
+	@{
+		<script src="https://checkout.stripe.com/checkout.js"></script>
+
+		<script>
+	var handler = StripeCheckout.configure({
+		key: '@Stripe.Value.PublishableKey',
+		locale: 'auto',
+		name: '@AppSettings.SiteTitle',
+		description: '@donation',
+		token: function (token) {
+			$('input#stripeToken').val(token.id);
+			$('form').submit();
+		}
+	});
+
+	$('#donateButton').on('click', function (e) {
+		e.preventDefault();
+
+		$('#error_explanation').html('');
+
+		var amount = $('input#amount').val();
+		amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+		amount = parseFloat(amount);
+
+		if (isNaN(amount)) {
+			$('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+		}
+		else if (amount < 5.00) {
+			$('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+		}
+		else {
+			amount = amount * 100; // Needs to be an integer!
+			handler.open({
+				amount: Math.round(amount)
+			})
+		}
+	});
+
+	// Close Checkout on page navigation
+	$(window).on('popstate', function () {
+		handler.close();
+	});
+
+		</script>
+
+	}
+
+}
+
+@*
+	class all ready exists
+	<button class="btn btn-default" type="submit" class="submit" id="donateButton">Donate</button>
+*@
+
+@* see _Layout.cshtml
+		@section topLevel{
+			@{ Html.RenderPartial("_Deletion1Modal"); }
+		}
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+		@{ Html.RenderPartial("_Action.js"); }
+	}
+
+*@

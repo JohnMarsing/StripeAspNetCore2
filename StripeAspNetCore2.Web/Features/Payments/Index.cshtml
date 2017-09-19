@@ -1,0 +1,59 @@
+﻿@model StripeAspNetCore2.Web.Features.Payments.DonateVM
+@using StripeAspNetCore2.Web.Navigation
+@using StripeAspNetCore2.Web.Features.Payments
+
+@inject IOptions<Stripe> Stripe
+@{
+	ViewBag.Title = "Payments";
+}
+
+<div class="page-header">
+	<h3>
+		<span class="text-success fa fa-dollar"></span> @ViewBag.Title
+	</h3>
+</div>
+
+
+<a asp-controller="@Payments.Controller"
+	 asp-action="@Payments.Charge.Action"
+	 asp-route-amount="5"
+	 class="btn btn-lg btn-success">
+	<i class="fa fa-dollar fa-2x pull-left"></i> $5 Charge
+</a>
+
+
+
+<a asp-controller="@Payments.Controller"
+	 asp-action="@Payments.Charge.Action"
+	 asp-route-amount="10"
+	 class="btn btn-lg btn-success">
+	<i class="fa fa-dollar fa-2x pull-left"></i> $10 Charge
+</a>
+
+
+<a asp-action="@Payments.Donate.Action"
+	 class="btn btn-lg btn-success">
+	<i class="fa fa-dollar fa-2x pull-left"></i> Donation
+</a>
+
+@*
+	<form method="post" action="/Demo/RegisterInput">
+	<form asp-controller="@Donate.Controller" asp-action="@Donate.Charge.Action" method="post">
+*@
+<form asp-controller="@Payments.Controller" asp-action="@Payments.Donate.Action" method="post">
+	Donate:
+	<input type="number" data-val="true"
+				 data-val-amount="The donate amount is not a valid number between 1 and 5,000"
+				 data-val-required="The donate field is required."
+				 id="Email" name="Email" value="" /> <br>
+	<button type="submit">Submit</button>
+	<input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+</form>
+
+<h3>Site Settings</h3>
+<dl class="dl-horizontal">
+	<dt>Site Title</dt>
+	<dd>@Stripe.Value.PublishableKey</dd>
+	<dt>SiteShort Title</dt>
+	<dd>@Stripe.Value.SecretKeyPartial</dd>
+</dl>

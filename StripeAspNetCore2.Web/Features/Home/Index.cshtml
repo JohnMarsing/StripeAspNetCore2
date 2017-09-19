@@ -1,0 +1,93 @@
+﻿@using StripeAspNetCore2.Web.Constants
+@using StripeAspNetCore2.Web.Navigation
+
+@{
+	ViewData["Title"] = "Home";
+}
+
+<div class="page-header">
+	<h1>
+		<span class="text-success fa fa-home fa-2x"></span> @AppSettings.SiteTitle - @ViewBag.Title
+	</h1>
+</div>
+
+
+<div class="visible-xs">
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="lead">Welcome to...</p>
+			<h2 class="text-danger pull-right">...@AppSettings.SiteShortTitle!</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="list-group">
+
+				<a title="About" class="list-group-item"
+					 asp-action="@Home.About.Action">
+					<i class="fa fa-info fa-fw fa-3x" aria-hidden="true"></i>
+					&nbsp;<span class="home-page-xs">About</span>
+				</a>
+
+				<a title="Contact" class="list-group-item"
+					 asp-action="@Home.Contact.Action">
+					<i class="fa fa-user-circle fa-fw fa-3x" aria-hidden="true"></i>
+					&nbsp;<span class="home-page-xs">Contact</span>
+				</a>
+
+				<a title="Payment" class="list-group-item"
+					 asp-controller="@Payments.Controller"
+					 asp-action="@Payments.Index.Action">
+					<i class="fa fa-dollar fa-fw fa-3x" aria-hidden="true"></i>
+					&nbsp;<span class="home-page-xs">Payment</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="well well-lg">
+				The purpose of <b>@AppSettings.SiteShortTitle</b> is to show off <b>Stripe</b> using ASP.Net MVC Core 2.0 and other basic things I would want to include as a template Web App
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row hidden-xs">
+
+	<div class="well well-lg">
+		The purpose of <b>@AppSettings.SiteShortTitle</b> is to show off <b>Stripe</b> using ASP.Net MVC Core 2.0 and other basic things I would want to include as a template Web App
+	</div>
+
+	<br />
+
+	<div class="list-group">
+		<a class="list-group-item"
+			 asp-action="@Home.About.Action">
+			<i class="fa fa-info fa-fw fa-2x" aria-hidden="true"></i>&nbsp; @Home.About.Title
+		</a>
+		<a class="list-group-item"
+			 asp-action="@Home.Contact.Action">
+			<i class="fa fa-user-circle fa-fw fa-2x" aria-hidden="true"></i>&nbsp; @Home.Contact.Title
+		</a>
+		<a class="list-group-item"
+			 asp-controller="@Payments.Controller"
+			 asp-action="@Payments.Index.Action">
+			<i class="fa fa-dollar fa-fw fa-2x" aria-hidden="true"></i>&nbsp; Payments
+		</a>
+
+	</div>
+
+</div>
+
+
+<h3>App Settings</h3>
+<dl class="dl-horizontal">
+	<dt>Site Title</dt>
+	<dd>@AppSettings.SiteTitle</dd>
+	<dt>SiteShort Title</dt>
+	<dd>@AppSettings.SiteShortTitle</dd>
+</dl>

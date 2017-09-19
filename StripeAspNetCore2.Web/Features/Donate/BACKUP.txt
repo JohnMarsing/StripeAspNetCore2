@@ -1,0 +1,26 @@
+﻿
+		public IActionResult Index()
+		{
+			return View();
+		}
+
+
+@using StripeAspNetCore2.Web.Constants.Donate
+
+@{
+	ViewBag.Title = "Donate";
+}
+
+<div class="page-header">
+	<h3>
+		<span class="text-success fa fa-dollar"></span> @ViewBag.Title
+	</h3>
+</div>
+
+<p>
+	Would you like to make a donation?<br />
+</p>
+
+<a class="btn btn-lg btn-success" href="@Url.Action(Actions.Charge)">
+	<i class="fa fa-dollar fa-2x pull-left"></i> Donation
+</a>

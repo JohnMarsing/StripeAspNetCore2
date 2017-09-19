@@ -1,0 +1,22 @@
+﻿@using StripeAspNetCore2.Web.Navigation
+
+@{
+	ViewData["Title"] = "About";
+}
+
+<div class="page-header">
+	<h1>
+		<span class="text-success fa fa-info fa-2x"></span> @ViewBag.Title
+	</h1>
+</div>
+
+<a asp-action="@Home.Index.Action"
+	 class="btn btn-default btn-xs">
+	<i class="fa fa-arrow-circle-o-left"></i> back to home
+</a>
+
+<h3>@ViewData["Message"]</h3>
+
+<p>
+	...
+</p>
