@@ -52,6 +52,13 @@
 			public const string FaClass = "fa fa-dollar";
 			public const string Title = "Donations";
 		}
+
+		public static class Donate2
+		{
+			public const string Action = "Donate2";
+			public const string FaClass = "fa fa-dollar";
+			public const string Title = "Donations";
+		}
 	}
 
 	public static class Donate
