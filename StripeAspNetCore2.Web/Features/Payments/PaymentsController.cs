@@ -25,17 +25,28 @@ namespace StripeAspNetCore2.Web.Features.Payments
 			return View(vm);
 		}
 
-		//[HttpPost]
-		//[ValidateAntiForgeryToken]
-		//public IActionResult Donate([Bind(Include = "Amount")] DonateVM donateVM)
-		//{
-		//	if (!ModelState.IsValid)
-		//	{
-		//		return View(donateVM);
-		//	}
-		//	var vm = new DonateVM();
-		//	return View();
-		//}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Index(DonateVM vm)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(vm);
+			}
+			var success = $"HttpPost success: {vm.Amount}. SecretKey: {stripeSettings.Value.SecretKey}";
+			//, SecretKeyPartial: {stripeSettings.Value.SecretKeyPartial}
+			//return RedirectToAction(Navigation.Payments.Donate.Action);
+			return RedirectToAction(Navigation.Payments.Donate2.Action, new { amount=vm.Amount, msg = success });
+		}
+
+		public IActionResult Donate2(int amount, string msg)
+		{
+			var vm = new Donate2VM();
+			vm.Amount = amount;
+			vm.Message = msg;
+			return View(vm);
+
+		}
 
 		public IActionResult Confirmation()
 		{
@@ -49,11 +60,15 @@ namespace StripeAspNetCore2.Web.Features.Payments
 			if (amount == 5)
 			{
 				//return RedirectToAction(Payments.Charge.Action, Payments.Controller);
-				return RedirectToAction(Navigation.Payments.Charge.Action, Navigation.Payments.Controller);
+				return RedirectToAction(
+					Navigation.Payments.Charge.Action, 
+					Navigation.Payments.Controller);
 			}
 			else
 			{
-				return RedirectToAction(Navigation.Payments.Charge.Action, Navigation.Payments.Controller);
+				return RedirectToAction(
+					Navigation.Payments.Charge.Action, 
+					Navigation.Payments.Controller);
 			}
 
 		}

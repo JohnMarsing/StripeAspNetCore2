@@ -1,0 +1,16 @@
+﻿@model StripeAspNetCore2.Web.Features.Payments.Donate2VM
+@*@using StripeAspNetCore2.Web.Navigation
+@using StripeAspNetCore2.Web.Features.Payments*@
+
+@{
+	ViewBag.Title = "Donate 2";
+}
+
+<div class="page-header">
+	<h3>
+		<span class="text-success fa fa-dollar"></span> @ViewBag.Title
+	</h3>
+</div>
+
+<h5>Amount: @Model.Amount </h5>
+<h5>Message: @Model.Message </h5>

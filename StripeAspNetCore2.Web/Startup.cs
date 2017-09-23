@@ -13,9 +13,22 @@ namespace StripeAspNetCore2.Web
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+
+		public Startup(IHostingEnvironment env)
 		{
-			Configuration = configuration;
+			var builder = new ConfigurationBuilder()
+					.SetBasePath(env.ContentRootPath)
+					.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+					.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+					//.AddJsonFile("config.json")
+					.AddEnvironmentVariables();
+
+			// I think you need to add a secret first, else you get an exception
+			//if (env.IsDevelopment())
+			//{
+			//	builder.AddUserSecrets<Startup>();
+			//}
+			Configuration = builder.Build();
 		}
 
 		public IConfiguration Configuration { get; }
@@ -31,6 +44,9 @@ namespace StripeAspNetCore2.Web
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
+			//loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+			//loggerFactory.AddDebug();
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
